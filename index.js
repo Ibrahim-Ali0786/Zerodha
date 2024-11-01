@@ -20,6 +20,7 @@ app.use(cookieParser());
 
 app.use(express.json());
 app.use(bodyParser.json());
+app.use('/',authRoute);
 app.get('/allHoldings',async(req,res)=>{
   let allHoldings = await holding.find({});
   res.json(allHoldings);
@@ -47,8 +48,6 @@ app.delete("/delete/:id",async(req,res)=>{
   let {id} = req.params;
   await OrderModel.findByIdAndDelete(id);
 })
-
-app.use('/',authRoute);
 mongoose.connect(uri,{
 })
 .then(() => console.log("MongoDB is  connected successfully"))
