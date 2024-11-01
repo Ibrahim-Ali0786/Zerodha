@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-       window.location.href="http://localhost:3000/login";
+       window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
       }
       const { data } = await axios.post(
         "http://localhost:8080",
@@ -23,7 +23,7 @@ const Home = () => {
       setUsername(user);
       return status
         ? navigate('/')
-        : (removeCookie("token"), window.location.href="http://localhost:3000/login");
+        : (removeCookie("token"), window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login");
     };
     verifyCookie();
   },[]);
