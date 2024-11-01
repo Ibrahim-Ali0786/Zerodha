@@ -23,7 +23,7 @@ function SignUp() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/signup",
+        "https://zerodha-pq9f.onrender.com/signup",
         {
           ...inputValue,
         },
