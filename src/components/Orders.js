@@ -6,7 +6,7 @@ import axios from "axios";
 const Orders = () => {
   let [order,setOrder] = useState([]);
   useEffect(()=>{
-    axios.get('http://localhost:8080/allOrder').then((res)=>{
+    axios.get('https://zerodha-pq9f.onrender.com/allOrder').then((res)=>{
       setOrder(res.data);
     })
   },[]);

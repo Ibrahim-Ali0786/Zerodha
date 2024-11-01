@@ -88,7 +88,7 @@ const WatchListActions = ({uid,curr,stock})=>{
     generalContext.openBuyWindow(uid,curr);
   };
     const handleSellClick= async()=>{
-      let response = await axios.get('http://localhost:8080/allOrder');
+      let response = await axios.get('https://zerodha-pq9f.onrender.com/allOrder');
       let data = response.data;
       let order = data.filter((data)=> data.name===uid);
       if(order && order.length>0)

@@ -15,7 +15,7 @@ const Home = () => {
        window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
       }
       const { data } = await axios.post(
-        "http://localhost:8080",
+        "https://zerodha-pq9f.onrender.com",
         {},
         { withCredentials: true }
       );
