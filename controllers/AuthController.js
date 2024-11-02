@@ -12,13 +12,11 @@ module.exports.Signup = async (req, res, next) => {
     const user = await User.create({ email, password, username, createdAt });
     const token = createSecretToken(user._id);
     res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-      secure:true,
-      sameSite: "None",
-      domain: "https://dashboard.d3bnl1cz0kxf11.amplifyapp.com",
-      maxAge: 7 * 24 * 60 * 60 * 1000
-    });
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Set to true if using HTTPS in production
+      sameSite: "strict", // Controls cookie access from third-party requests
+      maxAge: 24 * 60 * 60 * 1000, // Token expiration (1 day in milliseconds)
+  });
     res
       .status(201)
       .json({ message: "User signed in successfully", success: true, user });
@@ -42,13 +40,11 @@ module.exports.Login = async (req, res, next) => {
       }
        const token = createSecretToken(user._id);
        res.cookie("token", token, {
-        withCredentials: true,
-        httpOnly: false,
-        secure:true,
-       sameSite: "None",
-       domain: "https://dashboard.d3bnl1cz0kxf11.amplifyapp.com",
-       maxAge: 7 * 24 * 60 * 60 * 1000
-      });
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // Set to true if using HTTPS in production
+        sameSite: "strict", // Controls cookie access from third-party requests
+        maxAge: 24 * 60 * 60 * 1000, // Token expiration (1 day in milliseconds)
+    });
        res.status(201).json({ message: "User logged in successfully", success: true });
     } catch (error) {
       console.error(error);
