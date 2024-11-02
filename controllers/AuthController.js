@@ -20,7 +20,6 @@ module.exports.Signup = async (req, res, next) => {
     res
       .status(201)
       .json({ message: "User signed in successfully", success: true, user });
-    next();
   } catch (error) {
     console.error(error);
   }
@@ -47,7 +46,6 @@ module.exports.Login = async (req, res, next) => {
        sameSite: "None"
       });
        res.status(201).json({ message: "User logged in successfully", success: true });
-       next()
     } catch (error) {
       console.error(error);
     }
