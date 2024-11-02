@@ -15,7 +15,8 @@ module.exports.Signup = async (req, res, next) => {
       withCredentials: true,
       httpOnly: false,
       secure:true,
-      sameSite: "None"
+      sameSite: "None",
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
     res
       .status(201)
@@ -43,7 +44,8 @@ module.exports.Login = async (req, res, next) => {
         withCredentials: true,
         httpOnly: false,
         secure:true,
-       sameSite: "None"
+       sameSite: "None",
+       maxAge: 7 * 24 * 60 * 60 * 1000
       });
        res.status(201).json({ message: "User logged in successfully", success: true });
     } catch (error) {
