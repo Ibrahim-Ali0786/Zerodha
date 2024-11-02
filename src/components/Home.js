@@ -16,8 +16,7 @@ const Home = () => {
       }
       const { data } = await axios.post(
         "https://zerodha-pq9f.onrender.com",
-        {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
       const { status, user } = data;
       setUsername(user);
