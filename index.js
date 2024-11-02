@@ -13,7 +13,7 @@ const { default: mongoose } = require('mongoose');
 const cookieParser = require("cookie-parser");
 // const { default: Orders } = require('../dashboard/src/components/Orders.js');
 app.use(cors({
-  origin: ["https://frontend.d1dk8zlerjmfx7.amplifyapp.com/","https://dashboard.d3bnl1cz0kxf11.amplifyapp.com"],
+  origin: ["https://frontend.d1dk8zlerjmfx7.amplifyapp.com/","https://dashboard.d3bnl1cz0kxf11.amplifyapp.com","https://zerodha-pq9f.onrender.com"],
   credentials: true // This allows cookies or other credentials to be sent
 }))
 app.use(cookieParser());
