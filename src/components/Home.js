@@ -15,7 +15,6 @@ const Home = () => {
       if (!cookies.token) {
       //  window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
       navigate('/')
-      console.log(req.cookies)
       }
       const { data } = await axios.post(
         "https://zerodha-pq9f.onrender.com",
