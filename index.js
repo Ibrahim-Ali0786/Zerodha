@@ -4,6 +4,7 @@ const app = express()
 const uri = process.env.MONGO_URL;
 const port = process.env.port || 8080;
 const cors = require('cors');
+const session = require('express-session');
 const authRoute = require("./Routes/AuthRoute.js");
 const bodyParser = require('body-parser');
 const {holding} = require("./model/holdingModel.js");
@@ -12,12 +13,24 @@ const {OrderModel} = require("./model/OrderModel.js");
 const { default: mongoose } = require('mongoose');
 const cookieParser = require("cookie-parser");
 // const { default: Orders } = require('../dashboard/src/components/Orders.js');
+
 app.use(cors({
   origin: ["https://frontend.d1dk8zlerjmfx7.amplifyapp.com","https://dashboard.d3bnl1cz0kxf11.amplifyapp.com"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }))
+app.use(session({
+  secret: "hello",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+    secure: true,       // Ensures cookies are only sent over HTTPS
+    httpOnly: true,     // Prevents client-side JavaScript from accessing the cookie
+    sameSite: "None",   // Required for cross-site cookie
+  }
+}));
 app.use(cookieParser());
 
 app.use(express.json());
@@ -51,6 +64,8 @@ app.delete("/delete/:id",async(req,res)=>{
   await OrderModel.findByIdAndDelete(id);
 })
 mongoose.connect(uri,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
 .then(() => console.log("MongoDB is  connected successfully"))
 .catch((err) => console.error(err));
