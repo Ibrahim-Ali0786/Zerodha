@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
+  const [cookies, removeCookie] = useCookies(['token']);
   const [username, setUsername] = useState("");
   useEffect(() => {
     const verifyCookie = async () => {
@@ -25,7 +25,7 @@ const Home = () => {
         : (removeCookie("token"), window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login");
     };
     verifyCookie();
-  },[]);
+  },[cookies]);
   return (
     <>
       <TopBar />
