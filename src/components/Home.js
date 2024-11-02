@@ -23,7 +23,7 @@ const Home = () => {
       setUsername(user);
       return status
         ? navigate('/')
-        : navigate('/');
+        : (removeCookie("token"), window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login");
     };
     verifyCookie();
   },[]);
