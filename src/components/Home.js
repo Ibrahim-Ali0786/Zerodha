@@ -12,9 +12,6 @@ const Home = () => {
   console.log(cookies)
   useEffect(() => {
     const verifyCookie = async () => {
-      if (!cookies.token) {
-        window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
-       }
        const { data } = await axios.post(
          "https://zerodha-pq9f.onrender.com",
          {},
