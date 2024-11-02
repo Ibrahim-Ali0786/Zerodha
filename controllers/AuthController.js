@@ -15,6 +15,7 @@ module.exports.Signup = async (req, res, next) => {
       httpOnly: true,
       secure: true,
       sameSite: "None",
+      path: '*',
       domain: ".amplifyapp.com",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
     });
@@ -45,6 +46,7 @@ module.exports.Login = async (req, res, next) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
+        path: '*',
         domain: ".amplifyapp.com",
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
       });
