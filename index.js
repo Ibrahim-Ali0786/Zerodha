@@ -16,23 +16,11 @@ app.use(cors({
   origin: ["https://frontend.d1dk8zlerjmfx7.amplifyapp.com","https://dashboard.d3bnl1cz0kxf11.amplifyapp.com","https://zerodha-pq9f.onrender.com","https://zerodha-pq9f.onrender.com/login"],
   credentials: true // This allows cookies or other credentials to be sent
 }))
-app.options('*', cors()); // Enable pre-flight requests for all routes
-
 app.use(cookieParser());
 
 app.use(express.json());
 app.use(bodyParser.json());
 app.use('/',authRoute);
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://frontend.d1dk8zlerjmfx7.amplifyapp.com");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials", "true");
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    return res.status(200).json({});
-  }
-  next();
-});
 app.get('/allHoldings',async(req,res)=>{
   let allHoldings = await holding.find({});
   res.json(allHoldings);
