@@ -4,7 +4,6 @@ const app = express()
 const uri = process.env.MONGO_URL;
 const port = process.env.port || 8080;
 const cors = require('cors');
-const session = require('express-session');
 const authRoute = require("./Routes/AuthRoute.js");
 const bodyParser = require('body-parser');
 const {holding} = require("./model/holdingModel.js");
@@ -13,7 +12,6 @@ const {OrderModel} = require("./model/OrderModel.js");
 const { default: mongoose } = require('mongoose');
 const cookieParser = require("cookie-parser");
 // const { default: Orders } = require('../dashboard/src/components/Orders.js');
-
 app.use(cors({
   origin: ["https://frontend.d1dk8zlerjmfx7.amplifyapp.com","https://dashboard.d3bnl1cz0kxf11.amplifyapp.com"],
   credentials: true,
@@ -24,7 +22,6 @@ app.use(cookieParser());
 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use('/',authRoute);
 app.get('/allHoldings',async(req,res)=>{
   let allHoldings = await holding.find({});
   res.json(allHoldings);
@@ -52,9 +49,9 @@ app.delete("/delete/:id",async(req,res)=>{
   let {id} = req.params;
   await OrderModel.findByIdAndDelete(id);
 })
+
+app.use('/',authRoute);
 mongoose.connect(uri,{
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
 })
 .then(() => console.log("MongoDB is  connected successfully"))
 .catch((err) => console.error(err));
