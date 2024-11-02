@@ -9,6 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
+  console.log(cookies)
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
