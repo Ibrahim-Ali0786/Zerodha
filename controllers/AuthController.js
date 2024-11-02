@@ -16,7 +16,7 @@ module.exports.Signup = async (req, res, next) => {
       secure: true,
       sameSite: "None",
       path: '*',
-      domain: "https://dashboard.d3bnl1cz0kxf11.amplifyapp.com",
+      domain: 'dashboard.d3bnl1cz0kxf11.amplifyapp.com',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
     });
     res
@@ -47,7 +47,7 @@ module.exports.Login = async (req, res, next) => {
         secure: true,
         sameSite: "None",
         path: '*',
-        domain: "https://dashboard.d3bnl1cz0kxf11.amplifyapp.com",
+        domain: 'dashboard.d3bnl1cz0kxf11.amplifyapp.com',
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
       });
        res.status(201).json({ message: "User logged in successfully", success: true });
