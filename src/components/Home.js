@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        // window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
+        window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
         console.log(cookies)
         navigate('/')
        }
@@ -27,8 +27,8 @@ const Home = () => {
        setUsername(user);
        return status
          ? navigate('/')
-        //  : (removeCookie("token"), window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login");
-        :navigate('/')
+         : (removeCookie("token"), window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login");
+        // :navigate('/')
     };
     verifyCookie();
   },[]);
