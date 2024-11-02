@@ -20,17 +20,6 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }))
-app.use(session({
-  secret: "hello",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
-    secure: true,       // Ensures cookies are only sent over HTTPS
-    httpOnly: true,     // Prevents client-side JavaScript from accessing the cookie
-    sameSite: "None",   // Required for cross-site cookie
-  }
-}));
 app.use(cookieParser());
 
 app.use(express.json());

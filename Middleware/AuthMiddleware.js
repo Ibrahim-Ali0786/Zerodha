@@ -2,18 +2,17 @@ const {User} = require("../model/UserModel");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 module.exports.userVerification = async(req, res) => {
-  try{
-  if (!req.session.token){
+  const token = req.cookies.token
+  if (!token) {
     return res.json({ status: false })
   }
-  const user = await User.findById(req.session.token);
-  if (!user) {
-    return res.status(404).json({ status: false, message: "User not found" });
-  }
-  res.status(200).json({ status: true, user: user.username });
-}
-catch (error) {
-  console.error("Verification error:", error);
-  res.status(500).json({ status: false, message: "Internal server error" });
-}
+  jwt.verify(token,process.env.TOKEN_KEY, async (err, data) => {
+    if (err) {
+     return res.json({ status: false })
+    } else {
+      const user = await User.findById(data.id)
+      if (user) return res.json({ status: true, user: user.username })
+      else return res.json({ status: false })
+    }
+  })
 }
