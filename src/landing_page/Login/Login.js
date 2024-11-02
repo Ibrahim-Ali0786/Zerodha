@@ -5,11 +5,13 @@ import axios from "axios";
 // import "../style.css"
 const Login = () => {
   // const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState("");
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
   });
   const { email, password } = inputValue;
+  
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -39,7 +41,7 @@ const Login = () => {
       console.log(data);
       const { success, message } = data;
       if (success) {
-        handleSuccess(message);
+        setSuccessMessage(message);
         setTimeout(() => {
           window.location.href = "https://dashboard.d3bnl1cz0kxf11.amplifyapp.com";
           console.log(data);
@@ -61,6 +63,11 @@ const Login = () => {
     <div className='sig p-5' style={{height:"700px"}}>
     <div style={{marginLeft:'550px'}} className="form_container mt-5">
       <h2>Login Account</h2>
+      {successMessage && (
+          <div className="alert alert-success" role="alert">
+            {successMessage}
+          </div>
+        )}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>
