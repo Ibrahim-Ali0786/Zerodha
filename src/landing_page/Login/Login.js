@@ -29,11 +29,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     let data =  fetch("https://your-backend-url.com/login", {
+     let data = await fetch("https://your-backend-url.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // Important for cross-origin cookies
-        body: JSON.stringify({...inputValue},{ withCredentials: true })
+        body: JSON.stringify({
+          ...inputValue,
+        },
+        { withCredentials: true })
       })
       console.log(data);
       const { success, message } = data;
