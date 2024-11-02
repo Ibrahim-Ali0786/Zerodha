@@ -16,6 +16,7 @@ app.use(cors({
   origin: ["https://frontend.d1dk8zlerjmfx7.amplifyapp.com","https://dashboard.d3bnl1cz0kxf11.amplifyapp.com","https://your-backend-url.com"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
+  domain: "dashboard.d3bnl1cz0kxf11.amplifyapp.com",
   allowedHeaders: ["Content-Type", "Authorization"]
 }))
 app.use(cookieParser());
