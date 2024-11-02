@@ -9,13 +9,10 @@ const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
-  console.log(cookies)
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-      //  window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
-      navigate('/');
-      console.log(cookies)
+       window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login";
       }
       const { data } = await axios.post(
         "https://zerodha-pq9f.onrender.com",
@@ -25,11 +22,10 @@ const Home = () => {
       setUsername(user);
       return status
         ? navigate('/')
-        // : (removeCookie("token"), window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login");
-        :navigate('/')
+        : (removeCookie("token"), window.location.href="https://frontend.d1dk8zlerjmfx7.amplifyapp.com/login");
     };
     verifyCookie();
-  },[cookies]);
+  },[]);
   return (
     <>
       <TopBar />
