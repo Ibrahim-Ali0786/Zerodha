@@ -33,7 +33,7 @@ const Login = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // Important for cross-origin cookies
-        body: JSON.stringify({...input},{ withCredentials: true })
+        body: JSON.stringify({...inputValue},{ withCredentials: true })
       })
       console.log(data);
       const { success, message } = data;
