@@ -41,7 +41,8 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "https://dashboard.d3bnl1cz0kxf11.amplifyapp.com"
+          window.location.href = "https://dashboard.d3bnl1cz0kxf11.amplifyapp.com";
+          console.log(data);
         }, 1000);
       } else {
         alert(message)
