@@ -15,7 +15,7 @@ module.exports.Signup = async (req, res, next) => {
       withCredentials: true,
       httpOnly: true,
       secure:true,
-      sameSite:true
+      sameSite: "None"
     });
     res
       .status(201)
@@ -44,7 +44,7 @@ module.exports.Login = async (req, res, next) => {
         withCredentials: true,
         httpOnly: true,
         secure:true,
-        sameSite:true
+       sameSite: "None"
       });
        res.status(201).json({ message: "User logged in successfully", success: true });
        next()
