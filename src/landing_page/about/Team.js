@@ -9,7 +9,7 @@ function Team() {
                     </div>
                     <div className='row mb-5'>
                         <div className='col mt-2'>
-                            <img style={{borderRadius:"100%",width:"50%"}} className='mb-3' src='media\images\IMG_20191225_153047_893.jpg'/>
+                            <img style={{borderRadius:"100%",width:"50%"}} className='mb-3' src='media\images\bird.jpg'/>
                             <h2 style={{fontSize:'24px', opacity:'0.7'}}>Ibrahim Ali</h2>
                             <p style={{opacity:'0.7', fontWeight:'600'}}>Founder, CEO</p>
                             </div>
